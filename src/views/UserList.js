@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import {View, FlatList, Alert} from 'react-native'
-import users from '../data/users'
 import {Avatar, ListItem, Button, Icon} from 'react-native-elements'
 import UsersContext from '../context/UsersContext'
 
@@ -10,8 +9,8 @@ import UsersContext from '../context/UsersContext'
 export default props => {
     /* console.warn(Object.keys(props)) */
 
-   const  ctx = useContext(UsersContext)
-   console.warn(Object.keys(ctx.state.users.name))
+   const  {state} = useContext(UsersContext)
+   
 
     function getUserItem({item: user}) {
 
@@ -65,7 +64,7 @@ export default props => {
        <View>
            <FlatList 
            keyExtractor={users => users.id.toString()}
-           data={users}
+           data={state.users}
            renderItem={getUserItem}
            />
        </View>
