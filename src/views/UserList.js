@@ -1,13 +1,18 @@
-import React from 'react'
-import {Text, View, FlatList, Alert} from 'react-native'
+import React, { useContext } from 'react'
+import {View, FlatList, Alert} from 'react-native'
 import users from '../data/users'
 import {Avatar, ListItem, Button, Icon} from 'react-native-elements'
-import { getActionFromState } from '@react-navigation/core'
+import UsersContext from '../context/UsersContext'
+
 
 
 
 export default props => {
     /* console.warn(Object.keys(props)) */
+
+   const  ctx = useContext(UsersContext)
+   console.warn(Object.keys(ctx.state.users.name))
+
     function getUserItem({item: user}) {
 
         function confirmUserDeletions(user){
