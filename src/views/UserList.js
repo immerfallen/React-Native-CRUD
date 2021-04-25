@@ -9,7 +9,7 @@ import UsersContext from '../context/UsersContext'
 export default props => {
     /* console.warn(Object.keys(props)) */
 
-   const  {state} = useContext(UsersContext)
+   const  {state, dispatch} = useContext(UsersContext)
    
 
     function getUserItem({item: user}) {
@@ -19,7 +19,10 @@ export default props => {
                 {
                     text: 'Sim',
                     onPress() {
-                        console.warn('Usuário '+ user.name + ' excluído!')
+                        dispatch({
+                            type: 'deleteUser',
+                            payload: user,
+                        })
                     }
                 },
                 {
